@@ -322,14 +322,14 @@ The logo file and brand reference were not attached to the session, so the value
 | White | `#FFFFFF` | Product cards, product page ground, forms. |
 | Cream | `#F7F3EC` | Page background for editorial sections, quiz, result page. Separates sections without borders. |
 | Beige | `#D9C8AD` | The brand surface: shape cards, secondary buttons, shape labels on cards, dividers, the announcement bar. |
-| Beige deep | `#B49E7E` | Borders on beige surfaces, uppercase labels, focus rings, the one accent line a screen is allowed. |
-| Stone | `#8C8479` | Placeholder text, disabled states, captions. |
+| Beige deep | `#B49E7E` | Borders on beige surfaces, focus rings, chip outlines, the one accent line a screen is allowed. Never used for text: it is 2.6:1 on white. |
+| Stone | `#8C8479` | Placeholder text and disabled states only (both exempt from contrast rules). Never for captions or running text: it is 3.7:1 on white. |
 | Success | `#2F6B4F` | In-stock and confirmation states only. |
 | Alert | `#A33A2A` | Errors and low stock only. Never for sale pricing. |
 
-Sale pricing uses Ink for the sale price and Stone for the struck price. No red.
+Sale pricing uses Ink for the sale price and Charcoal with a strike-through for the original price. No red.
 
-Contrast checks: Ink on White 16.4:1, Ink on Cream 14.6:1, Ink on Beige 10.3:1, Charcoal on Cream 9.9:1, Beige deep on White 2.9:1 (labels 14px and above must be uppercase with letter-spacing, and it is never used for running text), White on Ink 16.4:1.
+Contrast checks (WCAG 2.2, calculated): Ink on White 18.4:1, Ink on Cream 16.7:1, Ink on Beige 11.2:1, Charcoal on White 11.6:1, Charcoal on Cream 10.5:1, White on Ink 18.4:1, Cream on Ink 16.7:1. All text colors clear AA and AAA on every ground they are used on. Beige deep (2.6:1) and Stone (3.7:1) fail AA for text and are restricted to the non-text roles above. Uppercase labels and captions are set in Charcoal.
 
 ### 5.2 Logo typeface
 
@@ -359,7 +359,7 @@ Both are open-licensed, load from Google Fonts with `display=swap`, and together
 | Body large | 18px | 17px | DM Sans 400 | 1.55 |
 | Body | 16px | 16px | DM Sans 400 | 1.55 |
 | Small (fit notes, captions) | 14px | 14px | DM Sans 400 | 1.5 |
-| Label (uppercase) | 12px | 12px | DM Sans 500, 0.08em tracking | 1.3 |
+| Label (uppercase, Charcoal) | 12px | 12px | DM Sans 500, 0.08em tracking | 1.3 |
 | Price | 16px | 16px | DM Sans 500, tabular | 1.3 |
 | Button | 15px | 15px | DM Sans 500, 0.02em tracking | 1 |
 
@@ -367,7 +367,7 @@ Body text never sets below 16px on mobile. Running text is capped at 65 characte
 
 ### 5.5 Buttons, cards, borders, icons, spacing
 
-**Buttons.** Height 48px (44px minimum tap target satisfied), horizontal padding 24px, radius 2px. Primary: Ink fill, White text; hover darkens to `#000000`; focus ring 2px Beige deep offset 2px. Secondary: Beige fill, Ink text; hover to Beige deep. Tertiary: text link in Ink with a 1px underline in Beige deep, underline thickens on hover. Disabled: Cream fill, Stone text. Sticky mobile add-to-cart is a full-width Primary.
+**Buttons.** Height 48px (44px minimum tap target satisfied), horizontal padding 24px, radius 2px. Primary: Ink fill, White text; hover darkens to `#000000`; focus ring 2px Beige deep offset 2px. Secondary: Beige fill, Ink text; hover to Beige deep. Tertiary: text link in Ink with a 1px underline in Beige deep, underline thickens on hover. Disabled: Cream fill, Stone text (disabled controls are exempt from contrast requirements). Sticky mobile add-to-cart is a full-width Primary.
 
 **Cards.** No shadow. White ground on Cream sections, Cream ground on White sections. Radius 2px. Image ratio 3:4, `object-fit: cover`. A shape label row sits under the title: up to three letter chips (H, A, X) in Beige with Ink text, 12px label style, plus "+2" when more apply. Hover: image swaps to the second photo and the quick-view control fades in at the bottom of the image. Wishlist is a 20px outline heart at top right of the image, filled in Ink when saved.
 
