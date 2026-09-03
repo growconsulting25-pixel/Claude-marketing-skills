@@ -1,7 +1,8 @@
 # Marketing Skills
 
 Claude Code loads every skill folder in this directory automatically. The
-skills come from two upstream repositories.
+skills come from three upstream sources: two skill collections copied into
+this directory and one Claude Code plugin enabled via `.claude/settings.json`.
 
 ## Source 1: coreyhaines31/marketingskills (50 skills)
 
@@ -21,6 +22,32 @@ npx skills add coreyhaines31/marketingskills -a claude-code -y
 
 `skills-lock.json` at the repo root records the installed source and hashes so
 `npx skills update` can pick up upstream changes.
+
+## Understand-Anything plugin (Egonex-AI/Understand-Anything)
+
+[Understand-Anything](https://github.com/Egonex-AI/Understand-Anything)
+(v2.9.4, upstream commit 840ad7d) is installed as a Claude Code **plugin**, not
+as folders in this directory, because its skills depend on bundled agents, a
+PostToolUse/SessionStart hook, and a TypeScript analysis core that Claude Code
+builds on first run. `.claude/settings.json` registers the marketplace and
+enables the plugin, so Claude Code adds it automatically when the project
+folder is trusted. It needs Node.js 22+ and pnpm 10+ on the machine.
+
+Skills it provides:
+
+| Skill | What it does |
+|-------|--------------|
+| `/understand` | Scan the codebase and build a knowledge graph in `.ua/` (large token cost on first run; incremental afterwards) |
+| `/understand-dashboard` | Launch the interactive web dashboard for the knowledge graph |
+| `/understand-chat` | Answer questions about the codebase using the knowledge graph |
+| `/understand-explain` | Deep-dive explanation of a file, function, or module |
+| `/understand-diff` | Analyze a git diff or PR for affected components and risk |
+| `/understand-onboard` | Generate an onboarding guide for new team members |
+| `/understand-domain` | Extract business domains and flows into a domain graph |
+| `/understand-knowledge` | Build a knowledge graph from a Karpathy-pattern LLM wiki |
+| `/understand-figma` | Build a design knowledge graph from a Figma file |
+
+Update it through Claude Code with `/plugin marketplace update understand-anything`.
 
 ## Source 2: irinabuht12-oss/marketing-skills (48 skills)
 
